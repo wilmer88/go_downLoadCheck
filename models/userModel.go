@@ -60,8 +60,8 @@ func RemoveUserById(userPersonId int) error {
 	for i, userPerson := range users {
 		if userPerson.ID == userPersonId {
 			users = append(users[:i], users[i+1:]...)
-			return  nil
+			return nil
 		}
 	}
-	return  fmt.Errorf("User with ID '%v' to delete was not found", userPersonId)
+	return fmt.Errorf("User with ID '%v' to delete was not found", userPersonId)
 }

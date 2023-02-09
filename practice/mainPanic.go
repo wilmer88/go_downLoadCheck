@@ -9,10 +9,9 @@ import (
 )
 
 func mainPanic() {
-println("working....")
-//panic method
-panic("something bad happend")
-println("working....")
-
+	println("working....")
+	//panic method
+	panic("something bad happend")
+	println("working....")
 
 }

@@ -1,11 +1,9 @@
 package main
 
 import (
-// "net/http"
-"fmt"
-
-// "github.com/wilmer88/go_downLoadCheck/controllers"
-
+	// "net/http"
+	"fmt"
+	// "github.com/wilmer88/go_downLoadCheck/controllers"
 )
 
 func main() {
@@ -15,7 +13,7 @@ func main() {
 		println("Ive ran this times:", i)
 		i++
 		if i == 4 {
-		fmt.Println("stoped at 3")
+			fmt.Println("stoped at 3")
 
 			break
 			// continue
@@ -35,7 +33,7 @@ func main() {
 
 	// ugly infinit loops
 	var infiniI int
-	for ; ; {
+	for {
 
 		if infiniI == 5 {
 			break
@@ -43,44 +41,40 @@ func main() {
 		}
 		fmt.Println("ugly will run till infinity but now only untill 4", infiniI)
 
-
 		infiniI++
 		continue
-
 
 	}
 
 	// purty infinit loops
-		var purtyI int
-		for {
-	
-			if purtyI == 5 {
-				break
-	
-			}
-			fmt.Println("pretty  will run till infinity but now only untill 4", purtyI)
-	
-			purtyI++
-			
-	
+	var purtyI int
+	for {
+
+		if purtyI == 5 {
+			break
+
 		}
+		fmt.Println("pretty  will run till infinity but now only untill 4", purtyI)
+
+		purtyI++
+
+	}
 
 	fmt.Println("------------------")
 	fmt.Println("starting slice collection loops")
 
-
 	// looping over collections
-	sliceArr := []int{1,2,3}
+	sliceArr := []int{1, 2, 3}
 	for sliI := 0; sliI < len(sliceArr); sliI++ {
 		println(sliceArr[sliI])
 	}
-	
-	  arrS2  := []int{1,2,3}
+
+	arrS2 := []int{1, 2, 3}
 	for sliI2, v := range arrS2 {
-		println("slice values:",sliI2, v)
+		println("slice values:", sliI2, v)
 	}
 
-	go_downLoadCheckCollection  := map[string]int{"http": 80, "https": 443}
+	go_downLoadCheckCollection := map[string]int{"http": 80, "https": 443}
 	// for _, v := range go_downLoadCheckCollection {
 	for k, v := range go_downLoadCheckCollection {
 		println("slice values:", k, v)

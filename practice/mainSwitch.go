@@ -1,14 +1,14 @@
 package main
 
 type HTTPRequest struct {
-		Method string
+	Method string
 }
 
 func mainSwitch() {
 	r := HTTPRequest{Method: "GET"}
 
 	switch r.Method {
-// implicit break cases use fallthrough if need to check next case below
+	// implicit break cases use fallthrough if need to check next case below
 	case "GET":
 		println("GET request")
 		//fallthrough
@@ -22,7 +22,5 @@ func mainSwitch() {
 		println("unhandled method")
 
 	}
-
-
 
 }

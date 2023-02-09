@@ -24,7 +24,7 @@
 - to run executable run ` "the exucutable file name" ` in the terminal/ command prompt (not git bash) of your code editor in the correct directory/root of project  
 - open browser to ` localhost:3000/nameOfTheController` generating a static route
 
-## what it does
+## in practice folder
 > function
 - arguments and parameters
 - returning results
@@ -39,4 +39,9 @@
 - else if
 - else
 > panic method
+> struts 
+> switch cases
+> slices
+> creating server code
+
 

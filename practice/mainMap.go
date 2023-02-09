@@ -4,27 +4,22 @@ import (
 	"fmt"
 )
 
-
-const(
-	userRoll = "worker" 
-	userId  = iota
-
-) 
-
-
+const (
+	userRoll = "worker"
+	userId   = iota
+)
 
 func mainMap() {
-	m := map[string]int{userRoll:userId}
+	m := map[string]int{userRoll: userId}
 	fmt.Println(m)
 	fmt.Println(m[userRoll])
-	m["worker"]= 32
+	m["worker"] = 32
 	fmt.Println(m)
 
 	fmt.Println("-----------------")
 
-
 	sliceMap := []int{m["worker"]}
-	sliceMap = append(sliceMap, 32,65)
+	sliceMap = append(sliceMap, 32, 65)
 	fmt.Println(sliceMap)
 
 	delete(m, userRoll)

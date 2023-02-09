@@ -1,6 +1,10 @@
-/* this file handles rought routing
+/*
+	this file handles rought routing
+
 when a  network request recived
- will direct to the correct controller to be processed */
+
+	will direct to the correct controller to be processed
+*/
 package controllers
 
 import (
@@ -21,9 +25,12 @@ func RegisterControllers() {
 	http.Handle("/users/", *uc)
 }
 
-/* Reaches into encoding/json package, creates an encoder that is designed to encode Go objects into JSON representations,
- then calls that Encod method on that encoder/ enc passing on whatever data recived */
-func encodeResponseAsJSON(data interface{}, w io.Writer){
+/*
+	Reaches into encoding/json package, creates an encoder that is designed to encode Go objects into JSON representations,
+
+then calls that Encod method on that encoder/ enc passing on whatever data recived
+*/
+func encodeResponseAsJSON(data interface{}, w io.Writer) {
 	enc := json.NewEncoder(w)
 	enc.Encode(data)
 }
