@@ -1,5 +1,10 @@
 package models
 
+import (
+	"errors"
+	"fmt"
+)
+
 type User struct {
 	ID        int
 	FirstName string
@@ -21,8 +26,42 @@ func GetUsers() []*User {
 
 // adds User to the User collection. requires a user object  and returns the user that was created and a potential error object
 func AddUser(userPerson User) (User, error) {
+	if userPerson.ID != 0 {
+		return User{}, errors.New("id was provided not expecting id")
+	}
 	userPerson.ID = nextId
 	nextId++
 	users = append(users, &userPerson)
 	return userPerson, nil
+}
+
+func GetUserByID(PersonId int) (User, error) {
+	for _, userPerson := range users {
+		if userPerson.ID == PersonId {
+			return *userPerson, nil
+		}
+	}
+
+	return User{}, fmt.Errorf("User with ID '%v' not found", PersonId)
+
+}
+
+func UpdateUser(userPerson User) (User, error) {
+	for i, personUpdate := range users {
+		if personUpdate.ID == userPerson.ID {
+			users[i] = &userPerson
+			return *personUpdate, nil
+		}
+	}
+	return User{}, fmt.Errorf("User with ID '%v' was not found", userPerson.ID)
+}
+
+func removeUserById(userPersonId int) error {
+	for i, userPerson := range users {
+		if userPerson.ID == userPersonId {
+			users = append(users[:i], users[i+1:]...)
+			return  nil
+		}
+	}
+	return  fmt.Errorf("User with ID '%v' to delete was not found", userPersonId)
 }

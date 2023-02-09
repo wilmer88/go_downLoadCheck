@@ -1,19 +1,14 @@
 package main
 
-import (
-	"net/http"
-
-	"github.com/wilmer88/go_downLoadCheck/controllers"
-
-)
-
-
+type HTTPRequest struct {
+		Method string
+}
 
 func main() {
+	r := HTTPRequest{Method: "GET"}
 
-//  creates http server
-	controllers.RegisterControllers()
-	http.ListenAndServe(":3000", nil)
+	switch
+
 
 
 }

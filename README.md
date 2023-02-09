@@ -1,8 +1,8 @@
 # go_downLoadCheck
-> ### documentation
+> ## documentation
 - installed and configured Go
-- install go vs extensions
-- install go vs code tools press ` ctrl + shift + p ` inside vs code and select all/check all boxes to install tools
+- install go vs code extensions
+- to install go vs code tools press ` ctrl + shift + p ` inside vs code, select all/check all boxes to install tools
 - create module folder in root of project OR where the developer wants to hold source code for the project,
 - open code editor in the root of project/ developer disired source code folder.  
 - if in  project root or developer desired root file path
@@ -30,4 +30,13 @@
 - returning results
 > Methods 
 - interfaces
+> Looping
+- loop till condition
+- loop till condition with post clause
+- infinite loops
+- loop over collections
+> if statement
+- else if
+- else
+> panic method
 
