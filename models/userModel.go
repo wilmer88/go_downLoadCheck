@@ -47,10 +47,10 @@ func GetUserByID(PersonId int) (User, error) {
 }
 
 func UpdateUser(userPerson User) (User, error) {
-	for i, personUpdate := range users {
-		if personUpdate.ID == userPerson.ID {
+	for i, toUpdate1 := range users {
+		if toUpdate1.ID == userPerson.ID {
 			users[i] = &userPerson
-			return *personUpdate, nil
+			return userPerson, nil
 		}
 	}
 	return User{}, fmt.Errorf("User with ID '%v' was not found", userPerson.ID)

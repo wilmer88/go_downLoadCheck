@@ -11,6 +11,8 @@
 - if needed edit module declaration with the hosting root source code. mine is github and looks like this
 `module github.com/wilmer88/go_downLoadCheck` `go1.20` this will organize project/source code in the disired root repository
 - to run program. with the go.mod file module declaration run `go run [source code hosting path]` or ` go run .` with out  executable file
+- to run executable file run ` "file name.exe" ` in the terminal/ command prompt (make sure your not in git bash) of your code editor in the correct directory/root of project  
+
 
 > creating models
 - in root of project creat a folder with the name of models
@@ -25,23 +27,23 @@
 - open browser to ` localhost:3000/nameOfTheController` generating a static route
 
 ## in practice folder
-> function
+- functions
 - arguments and parameters
 - returning results
-> Methods 
-- interfaces
-> Looping
+- Methods 
+- struts
+- Looping
 - loop till condition
 - loop till condition with post clause
 - infinite loops
 - loop over collections
-> if statement
+- if statement
 - else if
 - else
-> panic method
-> struts 
-> switch cases
-> slices
-> creating server code
+- panic method
+- switch cases
+- slices
+- creating server code
+- build command 
 
 
