@@ -1,9 +1,9 @@
 package main
 
 import (
-	
-	"github.com/wilmer88/go_downLoadCheck/models"
-	"fmt"
+	"net/http"
+
+	"github.com/wilmer88/go_downLoadCheck/controllers"
 
 )
 
@@ -11,13 +11,9 @@ import (
 
 func main() {
 
-	u := models.User{
-		ID: 2,
-		FirstName: "doris",
-		LastName: "morter",
-
-	}
-	fmt.Println(u)
+//  creates http server
+	controllers.RegisterControllers()
+	http.ListenAndServe(":3000", nil)
 
 
 }
