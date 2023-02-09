@@ -1,12 +1,23 @@
 package main
 
-import "fmt"
+import (
+	
+	"github.com/wilmer88/go_downLoadCheck/models"
+	"fmt"
+
+)
+
+
 
 func main() {
-	port := 3000
-	// msg, err := mainStartWebServer(port)
-	// fmt.Println(msg,err)
-	_, err := mainStartWebServer(port)
-	fmt.Println(err)
+
+	u := models.User{
+		ID: 2,
+		FirstName: "doris",
+		LastName: "morter",
+
+	}
+	fmt.Println(u)
+
 
 }
