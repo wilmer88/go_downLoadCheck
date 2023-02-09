@@ -1,8 +1,7 @@
-package controllers
-
 /* this file handles rought routing
 when a  network request recived
  will direct to the correct controller to be processed */
+package controllers
 
 import (
 	"encoding/json"
@@ -23,7 +22,7 @@ func RegisterControllers() {
 }
 
 /* Reaches into encoding/json package, creates an encoder that is designed to encode Go objects into JSON representations,
- then calls calls that encoded method on that encoder passing recived data  */
+ then calls that Encod method on that encoder/ enc passing on whatever data recived */
 func encodeResponseAsJSON(data interface{}, w io.Writer){
 	enc := json.NewEncoder(w)
 	enc.Encode(data)
