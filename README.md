@@ -26,12 +26,16 @@
 - to run executable run ` "the exucutable file name" ` in the terminal/ command prompt (not git bash) of your code editor in the correct directory/root of project  
 - open browser to ` localhost:3000/nameOfTheController` generating a static route
 
-## in practice folder
+## in practice folder or project
 - functions
 - arguments and parameters
 - returning results
 - Methods 
+- branching
+- controlling program flow
 - struts
+- switches
+- data types
 - Looping
 - loop till condition
 - loop till condition with post clause
@@ -41,7 +45,6 @@
 - else if
 - else
 - panic method
-- switch cases
 - slices
 - creating server code
 - build command 

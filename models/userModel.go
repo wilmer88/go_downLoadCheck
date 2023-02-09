@@ -3,12 +3,14 @@ package models
 import (
 	"errors"
 	"fmt"
+	"time"
 )
 
 type User struct {
 	ID        int
 	FirstName string
 	LastName  string
+	CreatedAt time.Time
 }
 
 // variable block. creates a collection of users in a/as a slice, that hold pointers to user objects
@@ -18,6 +20,9 @@ var (
 	nextId = 1
 	// nextId int32 = 1
 )
+
+
+
 
 // returns all User collection
 func GetUsers() []*User {
@@ -31,6 +36,7 @@ func AddUser(userPerson User) (User, error) {
 	}
 	userPerson.ID = nextId
 	nextId++
+	userPerson.CreatedAt = time.Now()
 	users = append(users, &userPerson)
 	return userPerson, nil
 }
