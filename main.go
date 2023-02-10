@@ -1,17 +1,11 @@
 package main
 
-import (
-
+import(
     "github.com/gofiber/fiber/v2"
 
-
-
-
-)
-
+) 
 
 func main() {
-	// cli.NewApp().Run(os.Args)
     app := fiber.New()
 
     app.Get("/", func(c *fiber.Ctx) error {
