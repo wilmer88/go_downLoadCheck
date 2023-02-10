@@ -1,20 +1,18 @@
 package main
 
 import (
-	// "github.com/gofiber/fiber"
 
+    "github.com/gofiber/fiber/cli.v2"
+	"os"
 
-
-
-    "github.com/gofiber/fiber/v2"
-    
+    cli "github.com/urfave/cli"
 
 
 )
 
 
 func main() {
-
+	cli.NewApp().Run(os.Args)
     app := fiber.New()
 
     app.Get("/", func(c *fiber.Ctx) error {
