@@ -48,5 +48,6 @@
 - slices
 - creating server code
 - build command 
+` go mod tidy `
 
 
