@@ -6,7 +6,7 @@ import (
 	// "github.com/wilmer88/go_downLoadCheck/controllers"
 )
 
-func main() {
+func mainLoop() {
 	// loop terminates based on condition
 	var i int
 	for i < 5 {
