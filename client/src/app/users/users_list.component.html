@@ -1,0 +1,75 @@
+<div class="card">
+    <div class="card-header">
+       {{pageTitle}}
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+        
+
+        </div>
+
+      </div>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-3">
+           
+          </div>
+          <div class="col">
+            <!-- <form> -->
+      
+              <div class="mb-3 hstack gap-3">
+                <label for="exampleInputPassword1" class="form-label">Find</label>
+                <input 
+                 type="text"
+                 class="form-control"
+                 id="exampleFormControlInput1"
+                 [(ngModel)]="listFilter"
+                 />
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            <!-- </form> -->
+              <hr>
+          </div>
+          <div class="col-3">
+            <h4>Found:{{listFilter}}</h4>
+          </div>
+        </div>
+      </div>
+        
+      <div class="mb-3">
+    <div class="card-body">
+
+     <div class="table-responsive">
+      <table class="table table-striped" *ngIf="members.length" >
+        <thead>
+          <tr>
+            <th>
+              <button class="btn btn-primary"
+               (click)="toggleImage()"
+               >{{showImage ? "Hide":"Show"}} image</button></th>                
+            <th> <h4>ID</h4> </th>
+            <th><h4>Name</h4></th>
+           </tr> 
+        </thead>
+        <tbody>
+         <tr  *ngFor="let member of members" >
+          <td><img 
+                    *ngIf="showImage"
+                    [src]="this.member.imageUrl"
+                    [title]="this.member.name"
+                    [style.width.px]="imageWidth"></td>
+          <td>{{this.member.id}}</td>
+          <td>{{this.member.name}}</td>
+         </tr>
+        </tbody>        
+       </table>
+     </div>
+       
+
+
+
+
+           
+          </div>
+    </div>
+  </div>

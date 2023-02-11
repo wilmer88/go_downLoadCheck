@@ -60,5 +60,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
  - ` ng generate component jobs `
  - ` ng serve `
  - ` ng new client --style scss --routing -s -t ` 
+ - https://angular.io/errors
 
 
