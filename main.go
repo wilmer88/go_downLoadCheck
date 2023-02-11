@@ -1,32 +1,28 @@
 package main
 
 import (
-	"os"
 	"net/http"
 	"github.com/wilmer88/go_downLoadCheck/controllers"
+   "github.com/gin-gonic/contrib/static"
+   "github.com/gin-gonic/gin"
 )
-
-func Middleware(handler http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("Access-Control-Allow-Origin", "*")
-		w.Header().Add("Content-Type", "application/json")
-		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-		w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
-		handler.ServeHTTP(w, r)
-	})
-}
-
 func main() {
-
-	//  creates http server
-	port:= os.Getenv("PORT")
-
-if port == ""{
-
-	port="3000"
-}
 	controllers.RegisterControllers()
-	http.ListenAndServe(":" + port, nil)
+	http.ListenAndServe(":3000", nil)
 
+server := gin.Default()
+
+server.Run(":8080")
+   r := gin.Default()
+   r.GET("/hello", func(c *gin.Context) {
+       c.String(200, "Hello")
+   })
+   api := r.Group("/api")
+   api.GET("/ping", func(c *gin.Context) {
+       c.JSON(200, gin.H{
+           "message": "ping",
+       })
+   })
+   r.Use(static.Serve("/", static.LocalFile("./views", true)))
+   r.Run()
 }
-
