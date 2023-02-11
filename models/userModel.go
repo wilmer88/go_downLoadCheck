@@ -9,7 +9,8 @@ import (
 type User struct {
 	ID        int
 	FirstName string
-	happiness  int
+	Happiness int
+	Url 		string
 	CreatedAt time.Time
 }
 

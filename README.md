@@ -57,3 +57,4 @@
 - Two-Way Binding ` [(ngModel)] `
 - interface for custom types
 - lifecycle
+- service class

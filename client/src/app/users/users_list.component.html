@@ -64,13 +64,14 @@
          <tr  *ngFor="let member of filterMembers" >
           <td><img 
                     *ngIf="showImage"
-                    [src]="this.member.imageUrl"
-                    [title]="this.member.name"
+                    [src]="this.member.ImageUrl"
+                    [title]="this.member.Name"
                     [style.width.px]="imageWidth"></td>
           <!-- <td>{{this.member.id | currency: "USD" : "symbol" : "1.2-2" }}</td> -->
-          <td>{{this.member.id}}</td>
-          <td>{{this.member.name | uppercase}}</td>
-          <td> <happy-stars [rating]="this.member.happiness"></happy-stars> </td>
+          <td>{{this.member.ID}}</td>
+          <td>{{this.member.Name | uppercase}}</td>
+          <td> <happy-stars [rating]="this.member.Happiness"
+                            (ratingClicked)="onRatingClicked($event)"></happy-stars> </td>
          </tr>
         </tbody>        
        </table>

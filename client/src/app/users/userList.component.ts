@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {OnInit} from "@angular/core";
 import { Imembers } from './user';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-users',
@@ -12,6 +13,7 @@ export class usersTable implements OnInit {
   imageWidth: number = 80;
   imageMargin: number = 5;
   showImage = false;
+  errorMassage: string = "";
 
  private _listFilter: string = "";
 
@@ -27,28 +29,34 @@ export class usersTable implements OnInit {
 
  filterMembers: Imembers[]=[];
 
-members: Imembers[]= [
-    {id: 0, name:"wilmer", imageUrl: "assets/images/wilmer.jpg", happiness:3.3},
-    {id: 1, name:"doris", imageUrl: "assets/images/wilmer.jpg", happiness:4.7},
-    {id: 10, name:"felix", imageUrl: "assets/images/wilmer.jpg", happiness:4.5 },
-];
-fam: string = "member";
+members: Imembers[]= [];
+
+// fam: string = "member";
 
 toggleImage():void {
   this.showImage = !this.showImage;
 }
+  constructor(private userService:UserService){}
 
-  constructor(){}
   ngOnInit(): void  {
-    this.listFilter= ""
+     this.userService.getUsers().subscribe({
+      next: members=>{
+        this.members = members;
+        this.filterMembers = this.members;
+      },
+      error: err => this.errorMassage = err
+    })
+  
+  };
 
-    //put code for start up
-  }
+  onRatingClicked(message:string):void{
+    this.pageTitle="product list: " + message;
+  };
 
   performFilter(filterBy: string): Imembers[]{
     filterBy = filterBy.toLowerCase();
     return this.members.filter((member: Imembers) => 
-    member.name.toLocaleLowerCase().includes(filterBy)
+    member.Name.toLocaleLowerCase().includes(filterBy)
     )
   }
 
