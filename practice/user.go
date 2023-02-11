@@ -10,7 +10,7 @@ func mainUser() {
 	users := models.User{
 		ID:        11,
 		FirstName: "doris",
-		LastName:  "morter",
+	
 	}
 	fmt.Println(users)
 

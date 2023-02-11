@@ -1,16 +1,15 @@
 package main
 
-import(
-    "github.com/gofiber/fiber/v2"
+import (
+	"net/http"
 
-) 
+	"github.com/wilmer88/go_downLoadCheck/controllers"
+)
 
 func main() {
-    app := fiber.New()
 
-    app.Get("/", func(c *fiber.Ctx) error {
-        return c.SendString("Hello, World 👋!")
-    })
+	//  creates http server
+	controllers.RegisterControllers()
+	http.ListenAndServe(":3000", nil)
 
-    app.Listen(":3000")
 }

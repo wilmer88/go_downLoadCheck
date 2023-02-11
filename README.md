@@ -26,7 +26,7 @@
 - to run executable run ` "the exucutable file name" ` in the terminal/ command prompt (not git bash) of your code editor in the correct directory/root of project  
 - open browser to ` localhost:3000/nameOfTheController` generating a static route
 
-## in practice folder or project
+## in Go
 - functions
 - arguments and parameters
 - returning results
@@ -48,3 +48,12 @@
 - slices
 - creating server code
 - build command 
+## Angular 
+> Data Binding
+- Pipes
+- interpolation
+- Property Binding
+- Event Binding
+- Two-Way Binding ` [(ngModel)] `
+- interface for custom types
+- lifecycle
