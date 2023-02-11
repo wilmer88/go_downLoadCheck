@@ -1,1 +1,1 @@
-web:go run main.go --host 0.0.0.0 --disableHostCheck &  cd client && npm start
+cd client && npm start --host 0.0.0.0 --disableHostCheck & go run main.go
