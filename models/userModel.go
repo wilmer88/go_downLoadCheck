@@ -9,7 +9,7 @@ import (
 type User struct {
 	ID        int
 	FirstName string
-	happines   int
+	happiness  int
 	CreatedAt time.Time
 }
 
@@ -20,9 +20,6 @@ var (
 	nextId = 1
 	// nextId int32 = 1
 )
-
-
-
 
 // returns all User collection
 func GetUsers() []*User {
