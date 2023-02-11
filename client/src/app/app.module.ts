@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { TodoComponent } from './todo/todo.component';
 import { usersTable } from './users/userList.component';
+import { StarComponent } from './shared/star.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { usersTable } from './users/userList.component';
     JobsComponent,
     TodoComponent,
     usersTable,
+    StarComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,33 +10,40 @@
 
       </div>
       <div class="container text-center">
+        <br>
         <div class="row">
-          <div class="col-3">
+          <div class="col">
+                  <!-- <form> -->
+      
+                    <div class="mb-3 hstack gap-3">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                  
+                      <input 
+                       type="text"
+                       class="form-control"
+                       id="exampleFormControlInput1"
+                       placeholder="fany"
+                        [(ngModel)]="listFilter"
+                       />
+                       
+                       <label for="exampleInputPassword1" class="form-label">Find</label>
+                    </div>
+                  <!-- </form> -->
+                
            
           </div>
-          <div class="col">
-            <!-- <form> -->
+          <div class="col-1">
       
-              <div class="mb-3 hstack gap-3">
-                <label for="exampleInputPassword1" class="form-label">Find</label>
-                <input 
-                 type="text"
-                 class="form-control"
-                 id="exampleFormControlInput1"
-                 [(ngModel)]="listFilter"
-                 />
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            <!-- </form> -->
-              <hr>
           </div>
-          <div class="col-3">
-            <h4>Found:{{listFilter}}</h4>
+          <div class="col-4">
+      
+            <h4>Found: {{listFilter}}</h4>
           </div>
         </div>
       </div>
         
       <div class="mb-3">
+        <hr>
     <div class="card-body">
 
      <div class="table-responsive">
@@ -49,17 +56,21 @@
                >{{showImage ? "Hide":"Show"}} image</button></th>                
             <th> <h4>ID</h4> </th>
             <th><h4>Name</h4></th>
+            <th><h4>Happiness</h4></th>
+
            </tr> 
         </thead>
         <tbody>
-         <tr  *ngFor="let member of members" >
+         <tr  *ngFor="let member of filterMembers" >
           <td><img 
                     *ngIf="showImage"
                     [src]="this.member.imageUrl"
                     [title]="this.member.name"
                     [style.width.px]="imageWidth"></td>
+          <!-- <td>{{this.member.id | currency: "USD" : "symbol" : "1.2-2" }}</td> -->
           <td>{{this.member.id}}</td>
-          <td>{{this.member.name}}</td>
+          <td>{{this.member.name | uppercase}}</td>
+          <td> <happy-stars [rating]="this.member.happiness"></happy-stars> </td>
          </tr>
         </tbody>        
        </table>
