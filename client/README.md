@@ -25,3 +25,40 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+- <img [src]="customer.imagePath" />
+- <button [disabled]="!isEnabld">save</button>
+- <div [style.color]="textColor" [attr.aria-label]="text">...</div>
+
+- <div class="button" [ngClass]="{foo:isActive}, bar: isDisabled" [attr.aria-label]="text">...</div>
+
+- <div class="field">
+<label class="label" for="firstName">first name</label>
+<input class="input" id="firstName" [(ngModel)]="jobs.firstName"/>
+ <button (click)="onJobs">save</button>
+ <div *ngIf="selectedJob">
+ You selected {{selectedJob.title}}
+  <ul *ngFor="let job of jobs">
+ <li>Title:{{job.title}} Location:{{job.location}} </li>
+ </ul>
+</div>
+ </div>
+
+ -  person <pre>{{persons | json}}</pre>
+
+ {{model}} interpolation
+`[property]` Bind to a DOM proberty
+(event) bind to an event
+` ngModel ` 2 way data binding
+` *ngIf ` conditional element
+` *ngFor ` loop
+
+
+<input type="text" value="firstName" [(ngModel)]="title" />
+
+- ` go mod tidy `
+ - ` ng generate component jobs `
+ - ` ng serve `
+ - ` ng new client --style scss --routing -s -t ` 
+
+
