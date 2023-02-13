@@ -8,64 +8,68 @@ import (
 	"github.com/go-sql-driver/mysql"
 )
 
-var db *sql.DB
+var dbRead *sql.DB
 
 func mainRead() {
 	//data souce
 	dsn := mysql.Config{
-		User: "root",
+		User:   "root",
 		Passwd: "morter706",
-		Addr: "localhost:3306",
-		Net: "tcp",
-		DBName: "wilmer_family",
+		Addr:   "localhost:3306",
+		Net:    "tcp",
+		DBName: "wilmerFamily",
 	}
 
-//databae handle
+	//databae handle
 	var err error
 	db, err = sql.Open("mysql", dsn.FormatDSN())
-	if err != nil{
+	if err != nil {
 		log.Fatal(err)
 	}
 
 	defer db.Close()
 
 	pingErr := db.Ping()
-	if pingErr != nil{
+	if pingErr != nil {
 		log.Fatal(pingErr)
 	}
-		fmt.Println("Connected")
+	fmt.Println("Connected")
 
-		FamMember, err := GetMember1(3)
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Printf("Member found: %v\n", FamMember)
+	FamMember, err := GetMember1(1)
+	if err != nil {
+		log.Fatal(err)
 	}
+	fmt.Printf("Member found: %v\n", FamMember)
+
+}
 
 type Member struct {
-	ID int
+	FamID     int
 	FirstName string
 	Happiness int
 }
 
-func GetMember1(memberID int32) ([]Member,error) {
-		var members []Member
+func GetMember1(famID int32) ([]Member, error) {
+	var members []Member
 
-		result, err := db.Query("SELECT ID,	FirstName, Happiness FROM FamMember WHERE ID= ?", 
-		memberID)
-		if err != nil{
-			return nil, fmt.Errorf("getMember %v: %v", memberID, err )}
-
-		defer result.Close()
-	
-		for result.Next() {
-			var isFam Member
-			if err := result.Scan(&isFam.ID, &isFam.FirstName, &isFam.Happiness); err != nil {
-				return nil, fmt.Errorf("getMember %v: %v", memberID, err)}
-
-			members = append(members, isFam)
-			if err:= result.Err(); err != nil {
-				return nil , fmt.Errorf("getMember %v: %v", memberID, err)}}
-		return members,nil
+	result, err := db.Query("SELECT famID,	FirstName, Happiness FROM FamMember WHERE famID= ?",
+		famID)
+	if err != nil {
+		return nil, fmt.Errorf("getMember %v: %v", famID, err)
 	}
 
+	defer result.Close()
+
+	for result.Next() {
+		var isFam Member
+		if err := result.Scan(&isFam.FamID, &isFam.FirstName, &isFam.Happiness); err != nil {
+			return nil, fmt.Errorf("getMember %v: %v", famID, err)
+		}
+
+		members = append(members, isFam)
+		if err := result.Err(); err != nil {
+			return nil, fmt.Errorf("getMember %v: %v", famID, err)
+		}
+	}
+	return members, nil
+}

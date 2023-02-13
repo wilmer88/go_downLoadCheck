@@ -13,62 +13,49 @@ var db *sql.DB
 func main() {
 	//data souce
 	dsn := mysql.Config{
-		User: "root",
+		User:   "root",
 		Passwd: "morter706",
-		Addr: "localhost:3306",
-		Net: "tcp",
-		DBName: "wilmer_family",
+		Addr:   "localhost",
+		Net:    "tcp",
+		DBName: "wilmerfamily",
 	}
 
-//databae handle
+	//databae handle
 	var err error
 	db, err = sql.Open("mysql", dsn.FormatDSN())
-	if err != nil{
+	if err != nil {
 		log.Fatal(err)
 	}
 
 	defer db.Close()
 
 	pingErr := db.Ping()
-	if pingErr != nil{
+	if pingErr != nil {
 		log.Fatal(pingErr)
 	}
-		fmt.Println("Connected")
+	fmt.Println("Connected")
 
-		FamMember, err := GetMember(3)
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Printf("Member found: %v\n", FamMember)
+	rowsUpdated, err := deleteMember(1)
+	if err != nil {
+		log.Fatal(err)
 	}
+	fmt.Printf("Member found: %v\n", rowsUpdated)
 
-type Member struct {
-	ID int
-	FirstName string
-	Happiness int
 }
 
-func GetMember(memberID int32) ([]Member,error) {
-		var members []Member
-
-		result, err := db.Query("SELECT ID,	FirstName, Happiness FROM FamMember WHERE ID= ?", 
-		memberID)
-		if err != nil{
-			return nil, fmt.Errorf("getMember %v: %v", memberID, err )}
-
-		defer result.Close()
-	
-		for result.Next() {
-			var isFam Member
-			if err := result.Scan(&isFam.ID, &isFam.FirstName, &isFam.Happiness); err != nil {
-				return nil, fmt.Errorf("getMember %v: %v", memberID, err)}
-
-			members = append(members, isFam)
-			if err:= result.Err(); err != nil {
-				return nil , fmt.Errorf("getMember %v: %v", memberID, err)}}
-		return members,nil
+func deleteMember(famid int32) (int64, error) {
+	// use query() instead of Exec() if you dont want result set as the return
+	result, err := db.Exec("DELETE FROM fammember WHERE FamID=?",
+		 famid)
+	if err != nil {
+		return 0, fmt.Errorf("delereMember: %v", err)
 	}
 
+	id, err := result.RowsAffected()
 
+	if err != nil {
+		return 0, fmt.Errorf("DeletedMember: %v", err)
+	}
 
-
+	return id, nil
+}

@@ -1,23 +1,18 @@
 DROP DATABASE IF EXISTS wilmer_family;
-CREATE DATABASE wilmer_family;
-USE wilmer_family;
-SELECT * FROM FamMember;
-ALTER TABLE FamMember
+DROP DATABASE IF EXISTS wilmerfamily;
+
+CREATE DATABASE wilmerfamily;
+USE wilmerfamily;
+SELECT * FROM fammember;
+ALTER TABLE fammember
 DROP Happiness;
-DROP TABLE FamMember;
+DROP TABLE fammember;
 
-CREATE TABLE FamMember (
-    ID int,
+CREATE TABLE fammember (
+    FamID int,
     FirstName varchar(255),
-    Happiness int
+    Happiness int,
+    primary key(FamID)
 );
-INSERT INTO FamMember (ID, FirstName, Happiness)
-VALUES (1, wilmer, 3);
-
-	dsn := mysql.Config{
-		User: "root",
-		Passwd: "morter706",
-		Addr: "localhost:3306",
-		DBName: "wilmer_family",
-
-	}
+INSERT INTO fammember (famID, FirstName, Happiness)
+VALUES (1, "wilmer", 3);
