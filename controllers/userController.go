@@ -6,6 +6,13 @@ import (
 	"regexp"
 	"strconv"
 	"github.com/wilmer88/go_downLoadCheck/models"
+	// "fmt"
+	// "database/sql"
+	// "log"
+	// "github.com/go-sql-driver/mysql"
+
+
+
 	
 )
 
@@ -63,8 +70,12 @@ func (uc userController) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // getAllUsers method is going to handle retriving all of the users from model layer and returning it back out
 func (uc *userController) getAllUsers(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
+	
+	
 	encodeResponseAsJSON(models.GetUsers(), w)
 }
+
+
 
 /*
 	getUser method exepts the id of a single resorce, exept respond writer from servHTTP method, call into the model layer and retrive
@@ -150,3 +161,4 @@ func newUserController() *userController {
 		userIdPattern: regexp.MustCompile(`^/users/(\d+)/?`),
 	}
 }
+

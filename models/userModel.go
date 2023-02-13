@@ -4,6 +4,9 @@ import (
 	"errors"
 	"fmt"
 	"time"
+	// "database/sql"
+	// "log"
+	// "github.com/go-sql-driver/mysql"
 )
 
 type User struct {
@@ -69,3 +72,6 @@ func RemoveUserById(userPersonId int) error {
 	}
 	return fmt.Errorf("User with ID '%v' to delete was not found", userPersonId)
 }
+
+
+
