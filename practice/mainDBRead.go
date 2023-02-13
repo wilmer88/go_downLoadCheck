@@ -10,7 +10,7 @@ import (
 
 var db *sql.DB
 
-func main() {
+func mainRead() {
 	//data souce
 	dsn := mysql.Config{
 		User: "root",
@@ -35,7 +35,7 @@ func main() {
 	}
 		fmt.Println("Connected")
 
-		FamMember, err := GetMember(3)
+		FamMember, err := GetMember1(3)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -48,7 +48,7 @@ type Member struct {
 	Happiness int
 }
 
-func GetMember(memberID int32) ([]Member,error) {
+func GetMember1(memberID int32) ([]Member,error) {
 		var members []Member
 
 		result, err := db.Query("SELECT ID,	FirstName, Happiness FROM FamMember WHERE ID= ?", 
@@ -68,7 +68,4 @@ func GetMember(memberID int32) ([]Member,error) {
 				return nil , fmt.Errorf("getMember %v: %v", memberID, err)}}
 		return members,nil
 	}
-
-
-
 

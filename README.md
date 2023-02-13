@@ -58,4 +58,6 @@
 - interface for custom types
 - lifecycle
 - service class
+## My SQL Database
 - ` go get -u github.com/go-sql-driver/mysql `
+- ` go mod download github.com/go-sql-driver/mysql  `
