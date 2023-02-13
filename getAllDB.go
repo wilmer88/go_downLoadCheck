@@ -1,10 +1,9 @@
-package getALL
+package dbFunctions
 
 import (
 	"database/sql"
 	"fmt"
 	"log"
-	
 	"github.com/go-sql-driver/mysql"
 )
 

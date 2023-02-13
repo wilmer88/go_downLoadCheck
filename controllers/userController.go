@@ -6,13 +6,6 @@ import (
 	"regexp"
 	"strconv"
 	"github.com/wilmer88/go_downLoadCheck/models"
-	// "fmt"
-	// "database/sql"
-	// "log"
-	// "github.com/go-sql-driver/mysql"
-
-
-
 	
 )
 
@@ -75,16 +68,14 @@ func (uc *userController) getAllUsers(w http.ResponseWriter, r *http.Request) {
 	encodeResponseAsJSON(models.GetUsers(), w)
 }
 
-
-
 /*
 	getUser method exepts the id of a single resorce, exept respond writer from servHTTP method, call into the model layer and retrive
 
 that user by id. if one is not found it's going to return out an error. line 30 if the id is found encodeResponsAsJSON method is
 called; hover over to see details of this method
 */
-func (uc *userController) getUser(id int, w http.ResponseWriter) {
-	userPerson, err := models.GetUserByID(id)
+func (uc *userController) getUser(FamID int, w http.ResponseWriter) {
+	userPerson, err := models.GetUserByID(FamID)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
@@ -111,14 +102,14 @@ func (uc *userController) postUser(w http.ResponseWriter, r *http.Request) {
 }
 
 // finds the user by id and updates that user
-func (uc *userController) PutUpdate(id int, w http.ResponseWriter, r *http.Request) {
+func (uc *userController) PutUpdate(FamID int, w http.ResponseWriter, r *http.Request) {
 	userPerson, err := uc.parseRequest(r)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte("could not parse user object"))
 		return
 	}
-	if id != userPerson.ID {
+	if FamID != userPerson FamID {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte("id of submitted user must match id in URL"))
 		return
