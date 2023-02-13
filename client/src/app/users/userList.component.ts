@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {OnInit} from "@angular/core";
-import { Imembers } from './user';
+import { Input } from '@angular/core';
+import { Imembers } from './Iuser';
 import { UserService } from './user.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { UserService } from './user.service';
   styleUrls: ["./user_list.component.css"]
 })
 export class usersTable implements OnInit {
+ 
   pageTitle: string ="Family Members";
   imageWidth: number = 80;
   imageMargin: number = 5;
@@ -29,7 +31,7 @@ export class usersTable implements OnInit {
 
  filterMembers: Imembers[]=[];
 
-members: Imembers[]= [];
+ members:  Imembers[]= [];
 
 // fam: string = "member";
 
@@ -39,14 +41,13 @@ toggleImage():void {
   constructor(private userService:UserService){}
 
   ngOnInit(): void  {
-     this.userService.getUsers().subscribe({
+    this.userService.getUsers().subscribe({
       next: members=>{
-        this.members = members;
+        this.members =  members;
         this.filterMembers = this.members;
       },
       error: err => this.errorMassage = err
     })
-  
   };
 
   onRatingClicked(message:string):void{

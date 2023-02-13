@@ -6,9 +6,13 @@ import (
 	"regexp"
 	"strconv"
 	"github.com/wilmer88/go_downLoadCheck/models"
+	
 )
 
 // handles two types of resource requests. User collection, Mainipulation of user
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+	}
 type userController struct {
 	userIdPattern *regexp.Regexp
 }
@@ -19,6 +23,7 @@ type userController struct {
 its job is to recive the HTTP request in, based on the information in the request decied which method bellow to pass that request off to, to actually be processed
 */
 func (uc userController) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+
 	if r.URL.Path == "/users" {
 		switch r.Method {
 		case http.MethodGet:
@@ -53,8 +58,11 @@ func (uc userController) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+
+
 // getAllUsers method is going to handle retriving all of the users from model layer and returning it back out
 func (uc *userController) getAllUsers(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
 	encodeResponseAsJSON(models.GetUsers(), w)
 }
 

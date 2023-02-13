@@ -10,7 +10,7 @@ type User struct {
 	ID        int
 	FirstName string
 	Happiness int
-	Url 		string
+	ImageUrl 		string
 	CreatedAt time.Time
 }
 
