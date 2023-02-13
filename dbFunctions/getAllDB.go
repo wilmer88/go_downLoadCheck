@@ -7,9 +7,9 @@ import (
 	"github.com/go-sql-driver/mysql"
 )
 
-var db *sql.DB
+// var db *sql.DB
 
-func getALLDB() {
+func check() {
 	//data souce
 	dsn := mysql.Config{
 		User:   "root",
@@ -34,7 +34,7 @@ func getALLDB() {
 	}
 	fmt.Println("Connected")
 
-	FamMember, err := GetMember1(1)
+	FamMember, err := GetMember2(1)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -42,13 +42,13 @@ func getALLDB() {
 
 }
 
-type Member struct {
+type Member1 struct {
 	FamID     int
 	FirstName string
 	Happiness int
 }
 
-func GetMember1(famID int32) ([]Member, error) {
+func GetMember2(famID int32) ([]Member, error) {
 	var members []Member
 
 	result, err := db.Query("SELECT * FROM fammember ORDER BY FamID DESC",

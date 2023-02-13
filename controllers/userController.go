@@ -6,7 +6,6 @@ import (
 	"regexp"
 	"strconv"
 	"github.com/wilmer88/go_downLoadCheck/models"
-	
 )
 
 // handles two types of resource requests. User collection, Mainipulation of user
@@ -63,8 +62,6 @@ func (uc userController) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // getAllUsers method is going to handle retriving all of the users from model layer and returning it back out
 func (uc *userController) getAllUsers(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
-	
-	
 	encodeResponseAsJSON(models.GetUsers(), w)
 }
 
@@ -74,8 +71,8 @@ func (uc *userController) getAllUsers(w http.ResponseWriter, r *http.Request) {
 that user by id. if one is not found it's going to return out an error. line 30 if the id is found encodeResponsAsJSON method is
 called; hover over to see details of this method
 */
-func (uc *userController) getUser(FamID int, w http.ResponseWriter) {
-	userPerson, err := models.GetUserByID(FamID)
+func (uc *userController) getUser(id int, w http.ResponseWriter) {
+	userPerson, err := models.GetUserByID(id)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
@@ -102,14 +99,14 @@ func (uc *userController) postUser(w http.ResponseWriter, r *http.Request) {
 }
 
 // finds the user by id and updates that user
-func (uc *userController) PutUpdate(FamID int, w http.ResponseWriter, r *http.Request) {
+func (uc *userController) PutUpdate(id int, w http.ResponseWriter, r *http.Request) {
 	userPerson, err := uc.parseRequest(r)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte("could not parse user object"))
 		return
 	}
-	if FamID != userPerson FamID {
+	if id != userPerson.ID {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte("id of submitted user must match id in URL"))
 		return
@@ -152,4 +149,3 @@ func newUserController() *userController {
 		userIdPattern: regexp.MustCompile(`^/users/(\d+)/?`),
 	}
 }
-
