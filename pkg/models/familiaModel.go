@@ -7,10 +7,10 @@ import(
 var db *gorm.DB
 
 type Fammember struct{
-gorm.model
-FirstName string `gorm:""json: FirstName`
-Happiness int `gorm:""json: Happiness`
-UrlStr string `gorm:""json: Urlstr`
+gorm.Model
+FirstName string `json:"FirstName"`
+Happiness *int `json:"Happiness"`
+UrlStr string `json:"Urlstr"`
 } 
 
 func init(){

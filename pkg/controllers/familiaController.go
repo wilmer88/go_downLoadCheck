@@ -42,34 +42,34 @@ import(
 	w.Write(res)
  }
 
- func eleminaMember(w http.ResponseController, r *http.Request){
-	vars := mux.vars(r)
+ func EleminaMember(w http.ResponseWriter, r *http.Request){
+	vars := mux.Vars(r)
 	memId := vars["famID"]
-	ID, err := strconv.ParseInt(memId,0,0)
-	 err != nil {
+	FamID, err := strconv.ParseInt(memId,0,0)
+	if err != nil {
 		fmt.Println("error while parsing delete")
 	}
-	fmember := models.DeleteMember(ID)
+	fmember := models.DeleteMember(FamID)
 	res, _ := json.Marshal(fmember)
 	w.Header().Set("Content-Type", "pkglication/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
  }
 
- fun UpdateFamMember(w http.ResponseWriter, r *http.Request){
+ func UpdateFamMember(w http.ResponseWriter, r *http.Request){
 	var updateMember = &models.Fammember{}
-	utils.Parse(r, updateMember)
+	utils.ParseBody(r, updateMember)
 	vars := mux.Vars(r)
-	memId : vars["famID"]
+	memId := vars["famID"]
 	ID, err := strconv.ParseInt(memId,0,0)
-	 err != nil {
+	if err != nil {
 		fmt.Println("error while parsing update")
     }
-	memberDetails, db:=models.GetFamMemById(ID)
+	memberDetails, db:=models.GetMemberByID(ID)
 	if updateMember.FirstName != ""{
 		memberDetails.FirstName = updateMember.FirstName
 	}
-	if updateMember.Happiness != ""{
+	if updateMember.Happiness != nil {
 		memberDetails.Happiness = updateMember.Happiness
 	}
 	if updateMember.UrlStr != ""{
