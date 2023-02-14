@@ -28,7 +28,7 @@ func setupRouter() *gin.Engine {
 
 	userRepo := controllers.New()
 	r.POST("/lafamily", userRepo.CreateUser)
-	r.GET("/lafamily.herokuapp.com", userRepo.GetUsers)
+	r.GET("/lafamily.herokuapp.com/", userRepo.GetUsers)
 	r.GET("/lafamily/:id", userRepo.GetUser)
 	r.PUT("/lafamily/:id", userRepo.UpdateUser)
 	r.DELETE("/lafamily/:id", userRepo.DeleteUser)
