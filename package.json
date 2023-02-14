@@ -1,6 +1,0 @@
-{
-  "devDependencies": {
-    "@angular/cli": "^15.1.5",
-    "@angular/compiler-cli": "^15.1.4"
-  }
-}
