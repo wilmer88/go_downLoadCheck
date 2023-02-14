@@ -1,13 +1,12 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Input } from '@angular/core';
 import { catchError, Observable, tap, throwError } from "rxjs";
 import { Imembers } from "./Iuser";
 @Injectable({
     providedIn: "root"
 })
 export class UserService {
-    private userUrl = "http://localhost:3000/users";
+    private userUrl = "http://localhost:8080/lafamily";
     constructor(private http: HttpClient){}
 
     getUsers(): Observable <Imembers[]>{
@@ -26,6 +25,7 @@ export class UserService {
     }
 
 }
+
 
 
 

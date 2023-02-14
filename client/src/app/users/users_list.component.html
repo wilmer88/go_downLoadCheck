@@ -4,8 +4,6 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-        
-
         </div>
 
       </div>
@@ -64,12 +62,12 @@
          <tr  *ngFor="let member of filterMembers" >
           <td><img 
                     *ngIf="showImage"
-                    [src]="this.member.ImageUrl"
-                    [title]="this.member.Name"
+                    [src]="this.member.UrlStr"
+                    [title]="this.member.FirstName"
                     [style.width.px]="imageWidth"></td>
           <!-- <td>{{this.member.id | currency: "USD" : "symbol" : "1.2-2" }}</td> -->
           <td>{{this.member.ID}}</td>
-          <td>{{this.member.Name | uppercase}}</td>
+          <td>{{this.member.FirstName | uppercase}}</td>
           <td> <happy-stars [rating]="this.member.Happiness"
                             (ratingClicked)="onRatingClicked($event)"></happy-stars> </td>
          </tr>

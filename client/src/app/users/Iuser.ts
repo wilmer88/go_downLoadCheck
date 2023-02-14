@@ -1,6 +1,6 @@
 export interface Imembers {
     ID: number;
-    Name: string;
-    ImageUrl: string;
+    FirstName: string;
+    UrlStr: string;
     Happiness: number;
 }
