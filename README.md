@@ -61,3 +61,5 @@
 ## My SQL Database
 - ` go get -u github.com/go-sql-driver/mysql `
 - ` go mod download github.com/go-sql-driver/mysql  `
+- ` go get "github.com/jinzhu/gorm/dialects/mysql" `
+ - ` go get "github.com/gorilla/mux" `
