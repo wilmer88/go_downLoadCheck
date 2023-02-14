@@ -6,7 +6,7 @@ import { Imembers } from "./Iuser";
     providedIn: "root"
 })
 export class UserService {
-    private userUrl = "http://localhost:8080/lafamily";
+    private userUrl = "http://lafamily.herokuapp.com";
     constructor(private http: HttpClient){}
 
     getUsers(): Observable <Imembers[]>{
