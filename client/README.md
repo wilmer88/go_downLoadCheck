@@ -63,3 +63,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
  - https://angular.io/errors
 
 
+- ` go mod tidy `
+ - ` ng generate component jobs `
+ - ` ng serve `
+ - ` ng new client --style scss --routing -s -t `
+ ` git remote -v `
+ `heroku repo:purge_cache -a appname`
+ `git push <heroku url> HEAD:master`
+ `heroku buildpacks:set heroku/php`
+ `go mod vendor`
